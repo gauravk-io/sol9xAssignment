@@ -5,8 +5,10 @@ This is a full-stack web application that allows users to manage their student r
 ## Features
 
 - User authentication (login and signup)
-- Student management (create, read, update, and delete)
-- Protected routes (requires authentication)
+- Student management by admin (add student, edit student data, delete student)
+- Students can view their own data and edit data and update their password
+- Admin can search students by name and email
+- Pagination in Admin student list.
 - Responsive design
 
 ## Technologies
