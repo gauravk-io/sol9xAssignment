@@ -16,6 +16,11 @@ const router = express.Router();
 router.post('/register', registerUser);
 router.post('/login', loginUser);
 
+// Health check
+router.get('/ping', (req, res) => {
+  res.status(200).json({ message: 'Server is awake' });
+});
+
 // Student profile
 router.get('/profile', protect, getOwnProfile);
 router.put('/profile', protect, updateOwnProfile);

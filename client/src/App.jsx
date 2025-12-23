@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import { AuthProvider, useAuth } from './context/AuthContext';
+import api from './services/api';
 import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
 import Login from './pages/Login';
@@ -15,6 +17,18 @@ const DashboardRedirect = () => {
 };
 
 function App() {
+  useEffect(() => {
+    const wakeupBackend = async () => {
+      try {
+        await api.get('/ping');
+        // console.log('Backend wakeup request sent');
+      } catch (error) {
+        // console.error('Backend wakeup failed:', error);
+      }
+    };
+    wakeupBackend();
+  }, []);
+
   return (
     <Router>
       <AuthProvider>
